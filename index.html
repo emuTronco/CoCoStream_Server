@@ -1,40 +1,43 @@
 <!DOCTYPE html>
 
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
-  </head>
-  <body>
-    <iframe
-      id="iframe_tw"
-      frameborder="0"
-      allowfullscreen="true"
-      scrolling="no"
-    ></iframe>
-  </body>
 
-  <script type="text/javascript">
-    url = getDomain(parent.document.URL, true);
-    src_url = "https://player.twitch.tv/?channel=lec&parent=" + url;
-    document.getElementById("iframe_tw").src = src_url;
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
 
-    function getDomain(url, subdomain) {
-      subdomain = subdomain || false;
+<body>
+  <iframe id="iframe_tw" frameborder="0" allowfullscreen="true" scrolling="no"></iframe>
+</body>
 
-      url = url.replace(/(https?:\/\/)?(www.)?/i, "");
+<script type="text/javascript">
 
-      if (!subdomain) {
-        url = url.split(".");
+  const urlParams = new URLSearchParams(window.location.search);
+  const channel = urlParams.get('channel');
 
-        url = url.slice(url.length - 2).join(".");
-      }
+  url = getDomain(parent.document.URL, true);
+  src_url = "https://player.twitch.tv/?channel=lec&parent=" + url;
+  document.getElementById("iframe_tw").src = src_url;
 
-      if (url.indexOf("/") !== -1) {
-        return url.split("/")[0];
-      }
+  function getDomain(url, subdomain) {
+    subdomain = subdomain || false;
 
-      return url;
+    url = url.replace(/(https?:\/\/)?(www.)?/i, "");
+
+    if (!subdomain) {
+      url = url.split(".");
+
+      url = url.slice(url.length - 2).join(".");
     }
-  </script>
+
+    if (url.indexOf("/") !== -1) {
+      return url.split("/")[0];
+    }
+
+    return url;
+  }
+  console.log(channel);
+</script>
+
 </html>
