@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div class="centrar">
+    <div><iframe id="iframe_tw" frameborder="0" allowfullscreen="true" scrolling="no"></iframe></div>
+    <div><iframe id="iframe_tw2" frameborder="0" allowfullscreen="true" scrolling="no"></iframe></div>
+  </div>
+</body>
+
+<script type="text/javascript">
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const channel = urlParams.get('channel');
+
+  canal = GetURLParameter('channel')
+
+  url = getDomain(parent.document.URL, true);
+  src_url = "https://player.twitch.tv/?channel=" + canal + "&parent=" + url;
+  document.getElementById("iframe_tw").src = src_url;
+  document.getElementById("iframe_tw2").src = src_url;
+
+  function getDomain(url, subdomain) {
+    subdomain = subdomain || false;
+
+    url = url.replace(/(https?:\/\/)?(www.)?/i, "");
+
+    if (!subdomain) {
+      url = url.split(".");
+
+      url = url.slice(url.length - 2).join(".");
+    }
+
+    if (url.indexOf("/") !== -1) {
+      return url.split("/")[0];
+    }
+
+    return url;
+  }
+
+  function GetURLParameter(sParam) {
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++) {
+      var sParameterName = sURLVariables[i].split('=');
+      if (sParameterName[0] == sParam) {
+        return sParameterName[1];
+      }
+    }
+  }
+</script>
+
+</html>
