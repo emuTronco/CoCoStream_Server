@@ -1,0 +1,12 @@
+#wrapper{
+    position:relative;
+}
+
+#second {
+    position:absolute;
+    top:200px;
+    bottom:0;
+    left:0;
+    width:300px;
+    background-color:#9ACD32;
+}
