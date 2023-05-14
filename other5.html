@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Streaming Dual</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        #stream1,
+        #stream2 {
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="stream1"></div>
+        <div id="stream2"></div>
+    </div>
+
+    <script src="https://embed.twitch.tv/embed/v1.js"></script>
+    <script>
+        // Twitch Embed SDK
+        new Twitch.Embed("stream2", {
+            channel: "lvpes",
+            height: "100%",
+            width: "100%"
+        });
+
+        // YouTube Player API
+        function onYouTubePlayerAPIReady() {
+            new YT.Player("stream1", {
+                height: "100%",
+                width: "100%",
+                videoId: "M7lc1UVf-VE",
+                playerVars: {
+                    autoplay: 1,
+                    controls: 0,
+                    modestbranding: 1,
+                    playsinline: 1
+                }
+            });
+        }
+    </script>
+    <script src="https://www.youtube.com/player_api"></script>
+</body>
+
+</html>
