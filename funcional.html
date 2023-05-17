@@ -66,8 +66,9 @@
             });
         }*/
 
-        var canalYT = GetURLParameter('channelYT');
+        var canalYT = GetURLParameter('channelYT')
         document.querySelector("#iframeYT").src = `https://www.youtube.com/embed/live_stream?channel=${canalYT}&enablejsapi=1&mute=1&autoplay=1`
+        document.querySelector("#iframeYT").autoplay = 1
 
         function getDomain(url, subdomain) {
             subdomain = subdomain || false;
