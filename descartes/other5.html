@@ -30,36 +30,53 @@
 
 <body>
     <div id="container">
-        <div id="stream1"></div>
+        <!--<div id="stream1"></div>-->
+        <!--<iframe width="100%" height="100%" src="https://www.youtube.com/embed/live_stream?channel=UCvqRdlKsE5Q8mf8YXbdIJLw" frameborder="0" allowfullscreen></iframe>-->
         <div id="stream2"></div>
     </div>
 
+    <script type="text/javascript">
+        function youtube_parser(url) {
+            var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+            var match = url.match(regExp);
+            return (match && match[7].length == 11) ? match[7] : false;
+        }
+    </script>
+
     <script src="https://embed.twitch.tv/embed/v1.js"></script>
     <script>
+        const channel = urlParams.get('channel');
+        canal = GetURLParameter('channel')
         // Twitch Embed SDK
         new Twitch.Embed("stream2", {
-            channel: "lvpes",
+            channel: "skain",
             height: "100%",
             width: "100%",
             layout: "video"
         });
+
+        streams = {
+            lolEsportsYT: "UCvqRdlKsE5Q8mf8YXbdIJLw",
+        }
 
         // YouTube Player API
         function onYouTubePlayerAPIReady() {
             new YT.Player("stream1", {
                 height: "100%",
                 width: "100%",
-                videoId: "M7lc1UVf-VE",
+                videoUrl: 'https://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1',
+                //https:www.youtube.com/embed/live_stream?channel=${streams.lolEsportsYT}&enablejsapi=1&mute=1&autoplay=1
                 playerVars: {
                     autoplay: 1,
                     controls: 0,
                     modestbranding: 1,
                     playsinline: 1
-                }
+                },
+                //src :'https://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1'
             });
         }
+        //document.querySelector("#stream2").src=`https://www.youtube.com/embed/live_stream?channel=${streams.lolEsportsYT}&enablejsapi=1&mute=1&autoplay=1`
     </script>
     <script src="https://www.youtube.com/player_api"></script>
 </body>
-
 </html>

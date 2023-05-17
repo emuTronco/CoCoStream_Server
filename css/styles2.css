@@ -1,12 +1,23 @@
-#wrapper{
-    position:relative;
-}
-
-#second {
-    position:absolute;
-    top:200px;
-    bottom:0;
-    left:0;
-    width:300px;
-    background-color:#9ACD32;
-}
+#container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  #idiv1{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  #idiv2 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 25%;
+  }
+  #idiv2 {
+    z-index: 10;
+    opacity:0.5;
+  }
